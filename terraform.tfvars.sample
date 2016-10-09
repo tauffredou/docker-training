@@ -1,0 +1,6 @@
+students = [
+  "student1",
+  "student2",
+]
+
+instructor = "instructor"
