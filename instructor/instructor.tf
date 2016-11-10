@@ -1,9 +1,6 @@
 
-data "template_file" "student_init" {
+ata "template_file" "instructor_init" {
   template = "${file("cloudinit.sh.tpl")}"
-  vars {
-    email = "${element(var.students,count.index)}"
-  }
 }
 
 resource "aws_instance" "instructor" {

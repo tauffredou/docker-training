@@ -2,9 +2,6 @@
 data "template_file" "student_init" {
   count = "${length(var.students)}"
   template = "${file("cloudinit.sh.tpl")}"
-  vars {
-    email = "${element(var.students,count.index)}"
-  }
 }
 
 resource "aws_instance" "master" {
