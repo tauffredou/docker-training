@@ -1,0 +1,5 @@
+files:
+  enable: true
+  provider: local
+  maxFileSize: 100000000
+  restrictTypes: false

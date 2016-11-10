@@ -1,0 +1,60 @@
+#!/bin/bash
+CWD=$(cd $(dirname $0);pwd)
+
+
+
+ACTION=$1
+SESSION=$2
+
+getips(){
+  if [ -f $CWD/$1/terraform.tfstate ];then
+    cat $CWD/$1/terraform.tfstate | jq -r '.modules[].resources[] | select(.type == "aws_instance") | .primary.attributes | [ ."tags.Name" , .public_ip] | join("\t")' | sort
+  fi
+}
+
+getinstructorip(){
+    cat $CWD/instructor/terraform.tfstate | jq -r '.modules[].resources[] | select(.type == "aws_instance") | .primary.attributes.public_ip '
+}
+
+case $ACTION in
+    plan)
+        if [ -z "$2" ];then
+            echo "Usage: $0 start SESSION";exit 1
+        fi
+        (cd $SESSION; terraform plan)
+    ;;
+    start)
+        if [ -z "$2" ];then
+            echo "Usage: $0 start SESSION";exit 1
+        fi
+        (cd $SESSION; terraform apply)
+    ;;
+    stop)
+        if [ -z "$2" ];then
+            echo "Usage: $0 start SESSION";exit 1
+        fi
+        (cd $SESSION; terraform destroy)
+    ;;
+    info)
+        if [ -z "$SESSION" ];then
+            echo Instructor
+            getips instructor
+
+            echo
+            echo Introduction
+            getips introduction
+
+            echo
+            echo Advanced
+            getips advanced
+        else
+            getips $SESSION
+        fi
+    ;;
+    sync)
+        cd instructor
+        scp -r . docker@$(getinstructorip):
+    ;;
+esac
+
+

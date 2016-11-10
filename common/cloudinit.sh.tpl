@@ -23,7 +23,7 @@ fi
 hostname $(cat /etc/hostname)
 
 # Fancy prompt courtesy of @soulshake.
-echo 'export PS1="\[\033[0;35m\]\u@\H \[\033[0;33m\]\w\[\033[0m\]: "' >> /etc/skel/.bashrc
+echo 'export PS1="\[\033[0;35m\]\u@\H \[\033[0;33m\]\w\[\033[0m\]🐳 "' >> /etc/skel/.bashrc
 
 # Create Docker user.
 useradd -d /home/docker -m -s /bin/bash docker
@@ -38,11 +38,11 @@ service ssh restart
 apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 
 cat > /etc/apt/sources.list.d/docker.list <<EOF
-deb https://apt.dockerproject.org/repo ubuntu-wily main
+deb https://apt.dockerproject.org/repo ubuntu-xenial main
 EOF
 
 apt-get -q update
-apt-get -qy install docker-engine git jq
+apt-get -qy install docker-engine git jq httping
 
 curl -L https://github.com/docker/compose/releases/download/1.8.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
@@ -64,7 +64,3 @@ for I in \
 do
 	docker pull $I
 done
-
-
-
-0

@@ -1,0 +1,22 @@
+version: "2"
+
+services:
+  app:
+    image: sdelements/lets-chat
+    ports:
+      - 80:8080
+      - 5222:5222
+    depends_on:
+     - mongo
+    volumes:
+     - "./settings.yml:/usr/src/app/config/settings.yml"
+
+  files:
+    image: nginx
+    ports:
+     - 81:80
+    volumes:
+     - "./htdocs:/usr/share/nginx/html"
+
+  mongo:
+    image: mongo:latest
