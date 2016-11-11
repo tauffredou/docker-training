@@ -15,29 +15,37 @@ instructor = "instructor"
 
 # Start instructor instance
 
+Start instance
 ```
-# Strat instance
 ./trainctl start instructor
-# Transfer files from instructor folder to vm
+```
+
+Transfer files from instructor folder to vm
+```
 ./trainctl sync
 
 ```
 
 # Start introduction session
 
+Preview actions
 ```
-# Preview actions
 ./trainctl plan introduction
-# Start instances
+```
+Start instances
+```
 ./trainctl start introduction
 ```
 
 # Start advanced session
 
+Preview actions
 ```
-# Preview actions
 ./trainctl plan advanced
-# Start instances
+```
+
+Start instances
+```
 ./trainctl start advanced
 ```
 
