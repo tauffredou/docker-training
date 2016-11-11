@@ -7,7 +7,7 @@ data "template_file" "student_init" {
 resource "aws_instance" "student" {
     count = "${length(var.students)}"
     ami = "${data.aws_ami.ubuntu.id}"
-    key_name = "docker-training"
+    #key_name = "docker-training"
     instance_type = "m3.medium"
     tags {
         Name = "Docker introduction - ${element(var.students,count.index)}"

@@ -48,3 +48,5 @@ fabric.properties
 .ideadocker-training.iml
 .idea
 *.iml
+**/*.tfstate
+**/*.tfstate*

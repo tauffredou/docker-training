@@ -1,6 +1,4 @@
-# Getting started
-
-## Configuration
+# Configuration
 Configuration file MUST be config/config.tf. I you want to set up multiple sessions, copy/paste or symlink this file.
 
 Set the list of attendees in config.tf, one line per attendee. Those are plain text values that give context to the spawned instances.
@@ -15,7 +13,7 @@ students = [
 instructor = "instructor"
 ```
 
-## Start instructor instance
+# Start instructor instance
 
 ```
 # Strat instance
@@ -25,7 +23,7 @@ instructor = "instructor"
 
 ```
 
-## Start introduction session
+# Start introduction session
 
 ```
 # Preview actions
@@ -34,7 +32,7 @@ instructor = "instructor"
 ./trainctl start introduction
 ```
 
-## Start advanced session
+# Start advanced session
 
 ```
 # Preview actions
@@ -42,3 +40,27 @@ instructor = "instructor"
 # Start instances
 ./trainctl start advanced
 ```
+
+# Show instances details
+
+```
+./trainctl info
+
+Instructor
+
+Introduction
+Docker introduction - student 1	54.195.53.209
+Docker introduction - student 2	54.170.118.30
+
+Advanced
+```
+
+You can copy paste result into the chat room
+
+# Clean up
+
+```
+./trainctl stop instructor
+./trainctl stop introduction
+./trainctl stop advanced
+``
