@@ -1,8 +1,6 @@
 #!/bin/bash
 CWD=$(cd $(dirname $0);pwd)
 
-
-
 ACTION=$1
 SESSION=$2
 
@@ -56,5 +54,3 @@ case $ACTION in
         scp -r . docker@$(getinstructorip):
     ;;
 esac
-
-
