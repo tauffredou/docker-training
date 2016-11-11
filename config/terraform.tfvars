@@ -3,4 +3,4 @@ students = [
   "student 2",
 ]
 
-instructor = "Your name here"
+instructor = "instructor" 

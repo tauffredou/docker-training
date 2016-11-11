@@ -63,4 +63,4 @@ You can copy paste result into the chat room
 ./trainctl stop instructor
 ./trainctl stop introduction
 ./trainctl stop advanced
-``
+```
