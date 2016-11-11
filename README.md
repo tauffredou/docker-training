@@ -38,7 +38,7 @@ instructor = "instructor"
 
 ```
 # Preview actions
-./trainctl plan introduction
+./trainctl plan advanced
 # Start instances
-./trainctl start introduction
+./trainctl start advanced
 ```
